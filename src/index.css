@@ -1,0 +1,168 @@
+/* Marathi thali names: a subset of Tiro Devanagari Marathi holding only the
+   letters used on the site (built by scripts/subset-fonts.mjs). */
+@font-face {
+  font-family: 'Tiro Devanagari Marathi';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/tiro-devanagari-marathi-subset.woff2') format('woff2');
+  unicode-range: U+0900-097F, U+200C-200D, U+25CC;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --on: 255 255 255;            /* text and hairlines on the deep sections */
+    --accent: 245 180 0;          /* saffron */
+    --star: 245 180 0;
+    --scrim: 11 11 13;            /* veil behind hero text (ink) */
+    --highlight: 245 180 0;       /* the hero's italic words */
+    --surface-sports: 11 11 13;   /* ink: rich black */
+    --surface-reviews: 21 21 24;  /* a step lighter than ink */
+    --surface-footer: 11 11 13;
+  }
+  [data-theme='light'] {
+    --on: 11 11 13;
+    --accent: 138 90 43;          /* saffron is unreadable on white; use the sand-deep tone */
+    --star: 184 115 0;            /* deeper gold so rating stars keep 3:1 on light grounds */
+    --scrim: 255 252 247;
+    --highlight: 14 116 144;      /* sea teal: saffron fails contrast on a pale sky */
+    --surface-sports: 255 255 255;
+    --surface-reviews: 224 244 251;
+    --surface-footer: 255 255 255;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 76px;
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-foam font-body text-ink antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid theme('colors.saffron.DEFAULT');
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Theme switch: the new theme is revealed by a circle (see theme.jsx), so
+   turn off the default cross-fade. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@layer components {
+  /* Buttons: one primary (saffron), one secondary (outline), one quiet. */
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-bold
+           transition-[transform,background-color,box-shadow,color] duration-200 ease-out
+           active:translate-y-px disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-saffron text-ink shadow-[0_8px_24px_-10px_rgba(245,180,0,.8)] hover:bg-saffron-dark;
+  }
+  .btn-outline-light {
+    @apply btn border border-white/35 bg-white/5 text-white backdrop-blur hover:bg-white/15;
+  }
+  [data-theme='light'] .btn-outline-light {
+    @apply border-ink/15 bg-white/75 text-ink hover:bg-white;
+  }
+  .btn-outline {
+    @apply btn border border-ink/15 bg-white text-ink hover:border-ink/30 hover:bg-ink/[0.03];
+  }
+  .btn-dark {
+    @apply btn bg-ink text-white hover:bg-ink-3;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[12px] font-extrabold uppercase tracking-[0.18em];
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-[2px] w-6 rounded-full bg-current;
+  }
+
+  .h-section {
+    @apply font-display text-[clamp(2rem,4.6vw,3.4rem)] font-semibold leading-[1.05] tracking-[-0.02em];
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[12px] font-bold;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-[15px] text-ink
+           placeholder:text-muted/70 transition-colors focus:border-sea-mid focus:outline-none focus:ring-4 focus:ring-wave/20;
+  }
+  .field[aria-invalid='true'] {
+    @apply border-sindoor focus:ring-sindoor/15;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .text-shadow { text-shadow: 0 2px 18px rgba(4, 16, 28, 0.45); }
+  [data-theme='light'] .text-shadow { text-shadow: none; }
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  }
+}
+
+/* Scroll reveal (see Reveal in ui.jsx): set only on content below the fold. */
+[data-reveal] {
+  transition: opacity 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0s),
+    transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0s);
+}
+[data-reveal='hidden'] {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 14px));
+}
+
+
+/* Footer name: a soft saffron-to-peach glow sits on the letters and slides to
+   follow the mouse (Footer.jsx sets --mx); at rest it lights the "L". */
+@property --mx {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 10%;
+}
+.footer-mark {
+  margin-bottom: -0.2em;
+  color: transparent;
+  background-image:
+    radial-gradient(ellipse 30% 130% at var(--mx) 30%, rgb(255 196 64 / 0.95) 0%, rgb(242 133 64 / 0.8) 30%, rgb(246 196 160 / 0.4) 55%, rgb(246 196 160 / 0) 78%),
+    linear-gradient(rgb(var(--on) / 0.12), rgb(var(--on) / 0.12));
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: --mx 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}

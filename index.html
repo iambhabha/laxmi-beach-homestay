@@ -1,38 +1,49 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#0B0B0D" />
+  <script>try{var t=new URLSearchParams(location.search).get('theme');if(t!=='light'&&t!=='dark')t=localStorage.getItem('laxmi-theme');if(t==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <title>Laxmi Beach Homestay & Restaurant – Best Beach Stay in Malvan</title>
-  <meta name="description" content="Sea-view AC rooms opposite the Sindhudurg Fort jetty, authentic Malvani thalis and our own Om Shiv Moreshwar scuba diving & water sports centre. 4.5★ on Google." />
-  <meta name="keywords" content="Malvan homestay, Malvan hotel, Sindhudurg homestay, beach homestay Malvan, scuba diving Malvan, water sports Malvan" />
+  <title>Laxmi Beach Homestay, Malvan – Sea-View Rooms near Sindhudurg Fort</title>
+  <meta name="description" content="Beach homestay in Malvan, 10 m from the Sindhudurg Fort jetty: AC rooms with sea views, Malvani thalis and our own scuba diving &amp; water sports centre. 4.5★ on Google." />
+  <meta name="keywords" content="Malvan homestay, homestay in Malvan, Malvan hotel near beach, hotel near Sindhudurg Fort, beach homestay Malvan, scuba diving Malvan, water sports Malvan, Malvani thali" />
+
+  <link rel="canonical" href="https://beachhomestaymalvan.com/" />
+  <meta name="geo.region" content="IN-MH" />
+  <meta name="geo.placename" content="Malvan, Sindhudurg" />
+  <meta name="geo.position" content="16.0545129;73.4658403" />
 
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://beachhomestaymalvan.com/" />
+  <meta property="og:site_name" content="Laxmi Beach Homestay & Restaurant" />
+  <meta property="og:locale" content="en_IN" />
   <meta property="og:title" content="Laxmi Beach Homestay & Restaurant, Malvan" />
   <meta property="og:description" content="Sea-view rooms, Malvani thalis and our own scuba diving centre — right where the journey to Sindhudurg Fort begins." />
-  <meta property="og:image" content="/images/view-from-homestay.webp" />
+  <meta property="og:image" content="https://beachhomestaymalvan.com/images/view-from-homestay.webp" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Sindhudurg Fort on the horizon, seen from Laxmi Beach Homestay in Malvan" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Laxmi Beach Homestay & Restaurant, Malvan" />
+  <meta name="twitter:description" content="Sea-view rooms, Malvani thalis and our own scuba diving centre — right where the journey to Sindhudurg Fort begins." />
+  <meta name="twitter:image" content="https://beachhomestaymalvan.com/images/view-from-homestay.webp" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="preload" as="image" href="/images/view-from-homestay.webp" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Hotel",
     "name": "Laxmi Beach Homestay & Restaurant",
+    "url": "https://beachhomestaymalvan.com/",
+    "logo": "https://beachhomestaymalvan.com/icon-512.png",
     "description": "Sea-view AC rooms opposite the Sindhudurg Fort jetty in Malvan, with a Malvani restaurant and our own scuba diving & water sports centre.",
-    "image": ["/images/view-from-homestay.webp", "/images/homestay-from-sea.webp"],
+    "image": ["https://beachhomestaymalvan.com/images/view-from-homestay.webp", "https://beachhomestaymalvan.com/images/homestay-from-sea.webp"],
     "telephone": "+91-7709682109",
     "address": {
       "@type": "PostalAddress",
@@ -51,14 +62,15 @@
       { "@type": "LocationFeatureSpecification", "name": "Parking", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Restaurant", "value": true }
     ],
-    "hasMap": "https://www.google.com/maps/place/Laxmi+Beach+Homestay+and+Restaurant/@16.0545129,73.4658403,17z"
+    "hasMap": "https://www.google.com/maps/place/Laxmi+Beach+Homestay+and+Restaurant/@16.0545129,73.4658403,17z",
+    "sameAs": ["https://www.google.com/maps/place/Laxmi+Beach+Homestay+and+Restaurant/@16.0545129,73.4658403,17z"],
+    "containsPlace": { "@type": "Restaurant", "name": "Laxmi Beach Restaurant", "servesCuisine": ["Malvani", "Seafood", "Konkani"] }
   }
   </script>
-  <script type="module" crossorigin src="/assets/index-DGo4lA2v.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BoNNrZgd.css">
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
